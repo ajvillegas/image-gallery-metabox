@@ -108,7 +108,7 @@ if ( $images ) { ?>
 Alternatively, this examples shows how to create a gallery using the built-in WordPress gallery shortcode:
 
 ```php
-<?php 
+<?php
 
 // Attachment IDs
 $images = get_post_meta( get_the_ID(), '_igmb_image_gallery_id', true );
