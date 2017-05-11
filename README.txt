@@ -36,7 +36,7 @@ function myprefix_display_gallery_meta_box( $display ) {
         'page_template'  => array(), // array of page template file names
         'page_on_front'  => false, // display on front page (true or false)
         'page_for_posts' => false, // display on posts page (true or false)
-        'priority'       => 'high',  // meta box priority
+        'priority'       => 'high', // meta box priority
     );
 	
     return $display;
