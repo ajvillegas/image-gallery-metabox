@@ -17,7 +17,7 @@ This plugin adds an intuitive image gallery meta box to the page editor screen. 
 
 By default, the plugin adds the image gallery meta box to pages only, but can be displayed on other post types, specific posts or pages, and page templates using the `igmb_display_meta_box` filter.
 
-The example below demonstrate how you can implement this filter on your theme (the values shown below are the filter's default values):
+The example below demonstrates how you can implement this filter on your theme (the values shown below are the filter's default values):
 
 ```php
 add_filter( 'igmb_display_meta_box', 'myprefix_display_gallery_meta_box' );
@@ -30,7 +30,7 @@ add_filter( 'igmb_display_meta_box', 'myprefix_display_gallery_meta_box' );
 function myprefix_display_gallery_meta_box( $display ) {
 	
     $display = array(
-        'title'          => __( 'Image Slider', 'my-text-domain' ), // meta box title
+        'title'          => __( 'Image Gallery', 'my-text-domain' ), // meta box title
         'post_type'      => array(), // array of post type slugs
         'post_id'        => array(), // array of post IDs
         'page_template'  => array(), // array of page template file names
@@ -44,7 +44,7 @@ function myprefix_display_gallery_meta_box( $display ) {
 }
 ```
 
-You can overwrite all parameters at once or only include the ones you want to overwrite in the filter. The following example would display the meta box only in the page assigned as Front page under Settings > Reading:
+You can overwrite all parameters at once or only include the ones you want to overwrite in the filter. The following example would display the meta box only on the page assigned as Front page under Settings > Reading:
 
 ```php
 add_filter( 'igmb_display_meta_box', 'myprefix_display_gallery_meta_box' );
