@@ -32,7 +32,7 @@ function myprefix_display_gallery_meta_box( $display ) {
     $display = array(
         'title'          => __( 'Image Gallery', 'my-text-domain' ), // meta box title
         'post_type'      => array(), // array of post type slugs
-        'post_id'        => array(), // array of post IDs
+        'post_id'        => array(), // array of post IDs (any post type)
         'page_template'  => array(), // array of page template file names
         'page_on_front'  => false, // display on front page (true or false)
         'page_for_posts' => false, // display on posts page (true or false)
