@@ -43,7 +43,7 @@ function myprefix_display_gallery_meta_box( $display ) {
 	
 }`
 
-You can override all parameters at once or only include the ones you want to overwrite in the filter. The following example would display the meta box only on the page assigned as Front page under Settings > Reading:
+You can override all parameters at once or only include the ones you want to override in the filter. The following example would display the meta box only on the page assigned as Front page under Settings > Reading:
 
 `add_filter( 'igmb_display_meta_box', 'myprefix_display_gallery_meta_box' );
 /**
