@@ -3,8 +3,8 @@ Contributors: ajvillegas
 Donate link:
 Tags: image gallery, meta box, metabox, admin
 Requires at least: 4.5
-Tested up to: 4.8
-Stable tag: 1.0.0
+Tested up to: 4.9
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,9 @@ For more information, please refer to the following pages:
 1. Image gallery meta box
 
 == Changelog ==
+
+= 1.0.1 =
+* Updated the admin CSS for better integration with Gutenberg editor.
 
 = 1.0.0 =
 * Initial release.
