@@ -69,7 +69,7 @@ class Image_Gallery_Metabox {
 	public function __construct() {
 
 		$this->plugin_name = 'image-gallery-metabox';
-		$this->version = '1.0.0';
+		$this->version = '1.0.1';
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
