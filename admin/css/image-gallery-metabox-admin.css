@@ -12,11 +12,13 @@
 	overflow: auto;
 	overflow-x: hidden;
 	padding: 5px;
+	list-style-type: none;
 }
  
 #gallery-metabox-list li {
 	float: left;
 	background: #eee;
+	border: #dfdfdf solid 1px;
 	width: 150px;
 	height: 150px;
 	line-height: 148px;
@@ -27,7 +29,6 @@
 }
 
 #gallery-metabox-list li img {
-	border: #dfdfdf solid 1px;
     height: auto;
     max-height: 100%;
     width: auto;
