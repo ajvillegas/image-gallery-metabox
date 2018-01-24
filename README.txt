@@ -100,6 +100,31 @@ if ( $images ) { ?>
 	    
 }`
 
+**Please note** that new image sizes added through `add_image_size` will not be automatically accessible for use by `wp_prepare_attachment_for_js`. You'll have to add the new image sizes using the `image_size_names_choose` filter. The following function illustrates how to add this in your theme.
+
+`add_filter( 'image_size_names_choose', 'myprefix_custom_image_sizes' );
+/**
+ * Add new image sizes to list of default image sizes so
+ * wp_prepare_attachment_for_js() can access them.
+ *
+ * @param   array   An array containing default image sizes and their names.
+ * @return  array   Merged array containing new image sizes and their names.
+ */
+function myprefix_custom_image_sizes( $size_names ) {
+	
+    // Add new image sizes to array
+    $new_size_names = array(
+        'featured-image'    => __( 'Featured Image', 'my-text-domain' ),
+		'portfolio-archive' => __( 'Portfolio Archive', 'my-text-domain' ),
+    );
+	
+    // Combine the two arrays
+    $size_names = array_merge( $new_size_names, $size_names );
+	
+    return $size_names;
+	
+}`
+
 Alternatively, this examples shows how to create a gallery using the built-in WordPress gallery shortcode:
 
 `<?php 
