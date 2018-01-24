@@ -121,7 +121,7 @@ function myprefix_custom_image_sizes( $size_names ) {
     // Add new image sizes to array
     $new_size_names = array(
         'featured-image'    => __( 'Featured Image', 'my-text-domain' ),
-	    'portfolio-archive' => __( 'Portfolio Archive', 'my-text-domain' ),
+        'portfolio-archive' => __( 'Portfolio Archive', 'my-text-domain' ),
     );
 	
     // Combine the two arrays
