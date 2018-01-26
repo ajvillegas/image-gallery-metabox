@@ -13,6 +13,7 @@
 	overflow-x: hidden;
 	padding: 5px;
 	list-style-type: none;
+	margin-bottom: 14px;
 }
  
 #gallery-metabox-list li {
@@ -33,6 +34,7 @@
     max-height: 100%;
     width: auto;
     vertical-align: middle;
+    display: block;
 }
 
 #gallery-metabox-list .edit-image,
