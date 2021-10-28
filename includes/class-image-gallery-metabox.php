@@ -68,7 +68,7 @@ class Image_Gallery_Metabox {
 	public function __construct() {
 
 		$this->plugin_name = 'image-gallery-metabox';
-		$this->version     = '1.0.1';
+		$this->version     = '1.1.0';
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -158,7 +158,7 @@ class Image_Gallery_Metabox {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function run() {
 		$this->loader->run();
@@ -168,8 +168,8 @@ class Image_Gallery_Metabox {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
-	 * @return    string    The name of the plugin.
+	 * @since  1.0.0
+	 * @return string The name of the plugin.
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
@@ -178,8 +178,8 @@ class Image_Gallery_Metabox {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
-	 * @return    Image_Gallery_Metabox_Loader    Orchestrates the hooks of the plugin.
+	 * @since  1.0.0
+	 * @return Image_Gallery_Metabox_Loader Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -188,8 +188,8 @@ class Image_Gallery_Metabox {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
-	 * @return    string    The version number of the plugin.
+	 * @since  1.0.0
+	 * @return string The version number of the plugin.
 	 */
 	public function get_version() {
 		return $this->version;

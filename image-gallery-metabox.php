@@ -15,7 +15,7 @@
  * Plugin Name:       Image Gallery Metabox
  * Plugin URI:        https://github.com/ajvillegas/image-gallery-metabox
  * Description:       This plugin adds an intuitive image gallery meta box to the page editor screen.
- * Version:           1.0.1
+ * Version:           1.1.0
  * Author:            Alexis J. Villegas
  * Author URI:        http://www.alexisvillegas.com
  * License:           GPL-2.0+
