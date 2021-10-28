@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Fired when the plugin is uninstalled.
  *
@@ -8,11 +7,6 @@
  *
  * @package    Image_Gallery_Metabox
  */
- 
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
@@ -25,42 +19,37 @@ if ( ! current_user_can( 'activate_plugins' ) ) {
 }
 
 // If action didn't originate on the proper page, then exit.
-if ( __FILE__ != WP_UNINSTALL_PLUGIN ) {
+if ( __FILE__ !== WP_UNINSTALL_PLUGIN ) {
 	return;
 }
 
 // Delete plugin options from database.
 if ( is_multisite() ) {
-	
-	global $wpdb;
-	$blogs = $wpdb->get_results( "SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A );
-		
-	if ( $blogs ) {
-		
-		foreach( $blogs as $blog ) {
-			
-			switch_to_blog( $blog['blog_id'] );
-				
-				// Delete post meta data
-				$posts = get_posts( array( 'posts_per_page' => -1 ) );
+	if ( function_exists( 'get_sites' ) && class_exists( 'WP_Site_Query' ) ) {
+		$sites = get_sites();
 
-		        foreach ( $posts as $post ) {
-		            $post_meta = get_post_meta( $post->ID );
-		            delete_post_meta( $post->ID, '_igmb_image_gallery_id' );
-		        }
-				
-			restore_current_blog();
+		if ( $sites ) {
+			foreach ( $sites as $site ) {
+				switch_to_blog( $site->blog_id );
+
+				// Delete post meta data.
+				$site_posts = get_posts( array( 'posts_per_page' => -1 ) );
+
+				foreach ( $site_posts as $site_post ) {
+					delete_post_meta( $site_post->ID, '_igmb_image_gallery_id' );
+				}
+
+				restore_current_blog();
+			}
 		}
-	}
-	
-} else {
-	
-	// Delete post meta data
-	$posts = get_posts( array( 'posts_per_page' => -1 ) );
 
-    foreach ( $posts as $post ) {
-        $post_meta = get_post_meta( $post->ID );
-        delete_post_meta( $post->ID, '_igmb_image_gallery_id' );
-    }
-	
+		return;
+	}
+} else {
+	// Delete post meta data.
+	$site_posts = get_posts( array( 'posts_per_page' => -1 ) );
+
+	foreach ( $site_posts as $site_post ) {
+		delete_post_meta( $site_post->ID, '_igmb_image_gallery_id' );
+	}
 }
