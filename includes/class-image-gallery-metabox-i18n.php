@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Define the internationalization functionality
  *
@@ -24,12 +23,12 @@
  * @subpackage Image_Gallery_Metabox/includes
  * @author     Alexis J. Villegas <alexis@ajvillegas.com>
  */
-class Image_Gallery_Metabox_i18n {
+class Image_Gallery_Metabox_I18n {
 
 	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function load_plugin_textdomain() {
 

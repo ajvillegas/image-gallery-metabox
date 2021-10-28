@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -33,27 +32,27 @@ class Image_Gallery_Metabox {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      Image_Gallery_Metabox_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @since  1.0.0
+	 * @access protected
+	 * @var    Image_Gallery_Metabox_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @since  1.0.0
+	 * @access protected
+	 * @var    string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @since  1.0.0
+	 * @access protected
+	 * @var    string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -64,12 +63,12 @@ class Image_Gallery_Metabox {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 
 		$this->plugin_name = 'image-gallery-metabox';
-		$this->version = '1.0.1';
+		$this->version     = '1.0.1';
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -88,8 +87,8 @@ class Image_Gallery_Metabox {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
-	 * @access   private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function load_dependencies() {
 
@@ -104,7 +103,7 @@ class Image_Gallery_Metabox {
 		 * of the plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-image-gallery-metabox-i18n.php';
-		
+
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
@@ -120,8 +119,8 @@ class Image_Gallery_Metabox {
 	 * Uses the Image_Gallery_Metabox_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
-	 * @access   private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function set_locale() {
 
@@ -130,28 +129,28 @@ class Image_Gallery_Metabox {
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
-	
+
 	/**
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Image_Gallery_Metabox_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		// Enqueue styles
+		// Enqueue styles.
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		
-		// Enqueue scripts
+
+		// Enqueue scripts.
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		// Register custom post meta box
+		// Register custom post meta box.
 		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'add_image_gallery_meta_box' );
-		
-		// Save meta box values
+
+		// Save meta box values.
 		$this->loader->add_action( 'save_post', $plugin_admin, 'save_meta_box_values' );
 
 	}
