@@ -28,7 +28,7 @@ The example below demonstrates how you can implement this filter on your theme (
  * @return  array   An array containing new values.
  */
 function myprefix_display_gallery_meta_box( $display ) {
-	
+
     $display = array(
         'title'          => __( 'Image Gallery', 'my-text-domain' ), // meta box title
         'post_type'      => array( 'page' ), // array of post type slugs
@@ -38,9 +38,9 @@ function myprefix_display_gallery_meta_box( $display ) {
         'page_for_posts' => false, // display on posts page (true or false)
         'priority'       => 'high', // meta box priority
     );
-	
+
     return $display;
-	
+
 }`
 
 You can override all parameters at once or only include the ones you want to override in the filter. The following example would display the meta box only on the page assigned as Front page under Settings > Reading:
@@ -53,13 +53,13 @@ You can override all parameters at once or only include the ones you want to ove
  * @return  array   An array containing new values.
  */
 function myprefix_display_gallery_meta_box( $display ) {
-	
+
     $display = array(
         'page_on_front' => true,
     );
-	
+
     return $display;
-	
+
 }`
 
 **Front-end Usage**
@@ -78,26 +78,27 @@ The following example demonstrates how to display a basic list of images using d
 $images = get_post_meta( get_the_ID(), '_igmb_image_gallery_id', true );
 
 // Display attachments
-if ( $images ) { ?>
-
-    <div class="attachment-images"> <?php
-	    
+if ( $images ) {
+    ?>
+    <div class="attachment-images">
+        <?php
         foreach( $images as $image ) {
-		    
+
             // Get attachment details
-            $attachment = wp_prepare_attachment_for_js( $image ); ?>
-		    
+            $attachment = wp_prepare_attachment_for_js( $image );
+
+            ?>
             <div>
                 <a href="<?php echo $attachment['link']; ?>">
                     <img src="<?php echo $attachment['sizes']['medium']['url']; ?>" alt="<?php echo $attachment['alt']; ?>" />
                 </a>
                 <p><?php echo $attachment['caption']; ?></p>
-            </div> <?php
-	            
-        } ?>
-	    
-    </div> <?php
-	    
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+    <?php
 }`
 
 **Please note** that new image sizes added through `add_image_size` will not be automatically accessible for use by `wp_prepare_attachment_for_js`. You'll have to add the new image sizes using the `image_size_names_choose` filter. The following function illustrates how to add this in your theme.
@@ -111,23 +112,23 @@ if ( $images ) { ?>
  * @return  array   Merged array containing new image sizes and their names.
  */
 function myprefix_custom_image_sizes( $size_names ) {
-	
+
     // Add new image sizes to array
     $new_size_names = array(
         'featured-image'    => __( 'Featured Image', 'my-text-domain' ),
         'portfolio-archive' => __( 'Portfolio Archive', 'my-text-domain' ),
     );
-	
+
     // Combine the two arrays
     $size_names = array_merge( $new_size_names, $size_names );
-	
+
     return $size_names;
-	
+
 }`
 
 Alternatively, this examples shows how to create a gallery using the built-in WordPress gallery shortcode:
 
-`<?php 
+`<?php
 
 // Attachment IDs
 $images = get_post_meta( get_the_ID(), '_igmb_image_gallery_id', true );

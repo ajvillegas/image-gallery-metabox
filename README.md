@@ -9,11 +9,11 @@ This plugin adds an intuitive image gallery meta box to the page editor screen.
 **Stable tag**: 1.0.1  
 **License**: [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)
 
-# Description
+## Description
 
 This plugin adds an intuitive image gallery meta box to the page editor screen. Designed for theme developers, it outputs an array of attachment IDs that can be used to manage galleries and sliders in the front-end.
 
-**Display Options**
+### Display Options
 
 By default, the plugin adds the image gallery meta box to pages only, but can be displayed on other post types, specific posts or pages, and page templates using the `igmb_display_meta_box` filter.
 
@@ -28,7 +28,7 @@ add_filter( 'igmb_display_meta_box', 'myprefix_display_gallery_meta_box' );
  * @return  array   An array containing new values.
  */
 function myprefix_display_gallery_meta_box( $display ) {
-	
+
     $display = array(
         'title'          => __( 'Image Gallery', 'my-text-domain' ), // meta box title
         'post_type'      => array( 'page' ), // array of post type slugs
@@ -38,9 +38,9 @@ function myprefix_display_gallery_meta_box( $display ) {
         'page_for_posts' => false, // display on posts page (true or false)
         'priority'       => 'high', // meta box priority
     );
-	
+
     return $display;
-	
+
 }
 ```
 
@@ -55,17 +55,17 @@ add_filter( 'igmb_display_meta_box', 'myprefix_display_gallery_meta_box' );
  * @return  array   An array containing new values.
  */
 function myprefix_display_gallery_meta_box( $display ) {
-	
+
     $display = array(
         'page_on_front' => true,
     );
-	
+
     return $display;
-	
+
 }
 ```
 
-**Front-end Usage**
+### Front-end Usage
 
 To retrieve the gallery attachment IDs use `get_post_meta` like this:
 
@@ -82,26 +82,27 @@ The following example demonstrates how to display a basic list of images using d
 $images = get_post_meta( get_the_ID(), '_igmb_image_gallery_id', true );
 
 // Display attachments
-if ( $images ) { ?>
-
-    <div class="attachment-images"> <?php
-	    
+if ( $images ) {
+    ?>
+    <div class="attachment-images">
+        <?php
         foreach( $images as $image ) {
-		    
+
             // Get attachment details
-            $attachment = wp_prepare_attachment_for_js( $image ); ?>
-		    
+            $attachment = wp_prepare_attachment_for_js( $image );
+            
+            ?>
             <div>
                 <a href="<?php echo $attachment['link']; ?>">
                     <img src="<?php echo $attachment['sizes']['medium']['url']; ?>" alt="<?php echo $attachment['alt']; ?>" />
                 </a>
                 <p><?php echo $attachment['caption']; ?></p>
-            </div> <?php
-	            
-        } ?>
-	    
-    </div> <?php
-	    
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+    <?php
 }
 ```
 
@@ -117,18 +118,18 @@ add_filter( 'image_size_names_choose', 'myprefix_custom_image_sizes' );
  * @return  array   Merged array containing new image sizes and their names.
  */
 function myprefix_custom_image_sizes( $size_names ) {
-	
+
     // Add new image sizes to array
     $new_size_names = array(
         'featured-image'    => __( 'Featured Image', 'my-text-domain' ),
         'portfolio-archive' => __( 'Portfolio Archive', 'my-text-domain' ),
     );
-	
+
     // Combine the two arrays
     $size_names = array_merge( $new_size_names, $size_names );
-	
+
     return $size_names;
-	
+
 }
 ```
 
@@ -146,37 +147,39 @@ echo do_shortcode( $wp_gallery );
 ```
 
 For more information, please refer to the following pages:
+
 * [get_post_meta()](https://developer.wordpress.org/reference/functions/get_post_meta/)
 * [wp_get_attachment_link()](https://developer.wordpress.org/reference/functions/wp_get_attachment_link/)
 * [wp_get_attachment_image()](https://developer.wordpress.org/reference/functions/wp_get_attachment_image/)
 * [wp_prepare_attachment_for_js()](https://developer.wordpress.org/reference/functions/wp_prepare_attachment_for_js/)
 * [Gallery Shortcode](https://codex.wordpress.org/Gallery_Shortcode)
 
-# Installation
+## Installation
 
-**Using The WordPress Dashboard**
+### Using The WordPress Dashboard
 
 1. Navigate to the 'Add New' Plugin Dashboard
 2. Click on 'Upload Plugin' and select `image-gallery-metabox.zip` from your computer
 3. Click on 'Install Now'
 4. Activate the plugin on the WordPress Plugins Dashboard
 
-**Using FTP**
+### Using FTP
 
 1. Extract `image-gallery-metabox.zip` to your computer
 2. Upload the `image-gallery-metabox` directory to your `wp-content/plugins` directory
 3. Activate the plugin on the WordPress Plugins Dashboard
 
-# Screenshots
+## Screenshots
 
 *Image gallery meta box*
-
 ![Image gallery meta box](wp-assets/screenshot-1.png?raw=true)
 
-# Changelog
+## Changelog
 
-**1.0.1**
+### 1.0.1
+
 * Updated the admin CSS for better integration with Gutenberg editor.
 
-**1.0.0**
+### 1.0.0
+
 * Initial release.
