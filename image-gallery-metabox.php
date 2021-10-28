@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -44,7 +43,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-image-gallery-metabox.php'
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since 1.0.0
  */
 function run_image_gallery_metabox() {
 
@@ -52,4 +51,5 @@ function run_image_gallery_metabox() {
 	$plugin->run();
 
 }
+
 run_image_gallery_metabox();
