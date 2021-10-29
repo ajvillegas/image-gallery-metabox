@@ -241,7 +241,7 @@ class Image_Gallery_Metabox_Admin {
 		$is_valid_nonce = isset( $_POST['igmb_image_gallery_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['igmb_image_gallery_nonce'] ), basename( __FILE__ ) ) ? 'true' : 'false';
 
 		// Exit depending on save status.
-		if ( $is_autosave || $is_revision || ! $is_valid_nonce || ! isset( $_POST['honeypot'] ) ) {
+		if ( $is_autosave || $is_revision || ! $is_valid_nonce || ! isset( $_POST['igm_honeypot'] ) ) {
 			return;
 		}
 

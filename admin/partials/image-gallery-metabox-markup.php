@@ -44,7 +44,7 @@
 				?>
 				</ul>
 
-				<input type="hidden" name="honeypot" value="true">
+				<input type="hidden" name="igm_honeypot" value="true">
 
 				<div>
 					<a class="gallery-add button button-primary" href="#"><?php echo esc_html__( 'Add Images', 'image-gallery-metabox' ); ?></a>
